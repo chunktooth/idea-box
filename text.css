@@ -1,17 +1,45 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+* {
+  color:  #D1d3d4;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+html {
+  font-size: 20px;
+}
+
 body {
-  margin: 0px;
+  margin: 0;
+  height: 100vh;
 }
 
 header {
- background-color: #E5F3F2;
+  margin: 0;
+  height: 44%;
+  background-color: #E5F3F2;
 }
 
-.save-btn {
-  background-color: #00A79D;
+h1 {
+  width: 60%;
+  margin: auto;
+  color: #00A79D;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  padding-top: 0.5rem; 
+
 }
 
-.save-btn:hover {
-  background-color: #045E55;
+h1 span {
+  margin: -2;
+  color: #6D6E71;
 }
 
 article {
@@ -23,11 +51,40 @@ h2 {
   color: #6D6E71;
 }
 
+h4 span {
+  color: #6D6E71;
+}
+
+
+p {
+  color: #939598;
+}
+
+#title,
+#content,
+#search {
+  display: block;
+  border: solid 1.5px #d1d3d4;
+  width: 85%;
+  margin: 0.5rem auto;
+  color:  #D1d3d4;
+  font-weight: bold;
+  font-size: 0.8rem;  
+}
+
+#title {
+  height: 1.6rem;
+}
+
+#content {
+  height: 4rem
+}
+
 .upvote-btn,
 .downvote-btn,
 .delete-btn {
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   border-style: none;
   background-repeat: no-repeat;
@@ -38,9 +95,6 @@ h2 {
   background-image: url(images/idea-icons/delete.svg);
 }
 
-p {
-  color: #939598;
-}
 
 .upvote-btn {
   background-image: url(images/idea-icons/upvote.svg);
@@ -50,7 +104,22 @@ p {
   background-image: url(images/idea-icons/downvote.svg);
 }
 
-h4 span {
-  color: #6D6E71;
+.save-btn {
+  position: relative;
+  left: 1.2rem;
+  border-radius: 0%;
+  margin: auto;
+  width: 85%;
+  height: 1.5rem;
+  color: #FFFFFF;
+  background-color: #00A79D;
+  font-size: 0.8rem;
 }
+
+.save-btn:hover {
+  background-color: #045E55;
+}
+
+
+
 

@@ -1,0 +1,56 @@
+body {
+  margin: 0px;
+}
+
+header {
+ background-color: #E5F3F2;
+}
+
+.save-btn {
+  background-color: #00A79D;
+}
+
+.save-btn:hover {
+  background-color: #045E55;
+}
+
+article {
+  width: 80%;
+  height: 30%;
+}
+
+h2 {
+  color: #6D6E71;
+}
+
+.upvote-btn,
+.downvote-btn,
+.delete-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-style: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.delete-btn {
+  background-image: url(images/idea-icons/delete.svg);
+}
+
+p {
+  color: #939598;
+}
+
+.upvote-btn {
+  background-image: url(images/idea-icons/upvote.svg);
+}
+
+.downvote-btn { 
+  background-image: url(images/idea-icons/downvote.svg);
+}
+
+h4 span {
+  color: #6D6E71;
+}
+

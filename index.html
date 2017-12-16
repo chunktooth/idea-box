@@ -2,24 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Idea Box</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:700" rel="stylesheet">
     <link href="text.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <header>
       <form>
-        <h1>Idea <span>box</span></h1>
+        <h1>idea<span>box</span></h1>
         <p class="missing-input-text"></p>
-        <input type="text" class="user-title" placeholder="Title" aria-label="Enter Your Idea Title">
-        <input type="text" class="user-content" placeholder="Body" aria-label="Write Your Idea">
-        <button class="save-btn" disabled>Save</button>
+        <input type="text" class="user-title" id="title" placeholder="Title" aria-label="Enter Your Idea Title">
+        <input type="textarea" class="user-content" id="content" placeholder="Body" aria-label="Write Your Idea">
+        <button class="save-btn" disabled>save</button>
       </form>
     </header>
     <main>
       <form>
         <input type="text" id="search" placeholder="Search" aria-label="Search ideas">
       </form>
-      <section class="parent-box"></section>
+      <section class="parent-box">
+        <article id=${id}>
+        <h2>Idea Title</h2>
+        <button class="delete-btn"></button>      
+      <p>Meow meow licks paws or sweet beast chase the pig around the house meoooow for ask to go outside and ask to come inside and ask to go outside and ask to come inside and sit on human. Eat plants, meow, and throw up because i ate plants claws in your leg, fall over dead (not really but gets sypathy) or caticus cuteicus scream at teh bath has closed eyes but still sees you eat owner's food. </p>
+      <footer>
+        <button class="upvote-btn"></button>
+        <button class="downvote-btn"></button>
+        <h4>quality: <span>Swill</span></h4>
+      </footer>
+    </article>
+      </section>
     </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>

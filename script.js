@@ -3,14 +3,12 @@ $('.user-title').on('input', enableSaveBtn);
 $('.user-content').on('input', enableSaveBtn);
 $('.save-btn').on('click', getUserData);
 $('.parent-box').on('click', '.delete-btn', deleteCard);
-
-
-function IdeaData(title, content, id, quality) {
-  this.title = title;
-  this.content = content;
-  this.id = id;
-  this.quality = quality;
-}
+$(document).ready(function() {
+  for(var i = 0; i < localStorage.length; i++){
+  var key = localStorage.key(i);
+  getIdeaFromStorage(key);
+  }
+});
 
 function getUserData(e) {
   e.preventDefault();
@@ -20,14 +18,18 @@ function getUserData(e) {
   var $quality = 'swill';
   $('.user-content').val('');
   $('.user-title').val('');
-  createCard($title, $content, $id, $quality);
   storeIdeaCards($title, $content, $id, $quality);
 }
 
-function storeIdeaCards(title, content, id, quality) {
+function IdeaData(title, content, id, quality) {
+  this.title = title;
+  this.content = content;
+  this.id = id;
+  this.quality = quality;
+}
 
+function storeIdeaCards(title, content, id, quality) {
   var ideaObject = new IdeaData(title, content, id, quality);
-  console.log(ideaObject)
   var stringifyObject = JSON.stringify(ideaObject);
   var key = id;
   localStorage.setItem(key, stringifyObject);  
@@ -37,7 +39,11 @@ function storeIdeaCards(title, content, id, quality) {
 function getIdeaFromStorage(key) {
   var retrievedObject = localStorage.getItem(key);
   var parsedObject = JSON.parse(retrievedObject);
-  console.log(parsedObject);
+  var title = parsedObject.title;
+  var content = parsedObject.content;
+  var id = parsedObject.id;
+  var quality = parsedObject.quality;
+  createCard(title, content, id, quality);
 }
 
 function enableSaveBtn(e){
@@ -69,7 +75,10 @@ function createCard(title, content, id, quality){
   $('.save-btn').attr('disabled', true);
 }
 
-function deleteCard() {
+function deleteCard(key) {
+  for(var i = 0; i < localStorage.length; i++){
+    var cardId = localStorage.key(i);
+    localStorage.removeItem(cardId);
+  }
  $(this).parent().remove();
 }
-

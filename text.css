@@ -95,15 +95,25 @@ p {
   background-image: url(images/idea-icons/delete.svg);
 }
 
+.delete-btn:hover {
+  background-image: url(images/idea-icons/delete-hover.svg);
+}
 
 .upvote-btn {
   background-image: url(images/idea-icons/upvote.svg);
+}
+
+.upvote-btn:hover {
+  background-image: url(images/idea-icons/upvote-hover.svg);
 }
 
 .downvote-btn { 
   background-image: url(images/idea-icons/downvote.svg);
 }
 
+.downvote-btn:hover {
+  background-image: url(images/idea-icons/downvote-hover.svg);  
+}
 .save-btn {
   position: relative;
   left: 1.2rem;

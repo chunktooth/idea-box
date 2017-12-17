@@ -5,8 +5,8 @@ $('.save-btn').on('click', getUserData);
 $('.parent-box').on('click', '.delete-btn', deleteCard);
 
 
-function IdeaData() {
-  this.title = tile;
+function IdeaData(title, content, id, quality) {
+  this.title = title;
   this.content = content;
   this.id = id;
   this.quality = quality;
@@ -25,11 +25,9 @@ function getUserData(e) {
 }
 
 function storeIdeaCards(title, content, id, quality) {
-  var ideaObject = { 
-    title: title,
-    content: content,
-    id: id,
-    quality: quality };
+
+  var ideaObject = new IdeaData(title, content, id, quality);
+  console.log(ideaObject)
   var stringifyObject = JSON.stringify(ideaObject);
   var key = id;
   localStorage.setItem(key, stringifyObject);  
@@ -42,18 +40,6 @@ function getIdeaFromStorage(key) {
   console.log(parsedObject);
 }
 
-
-// IdeaData.prototype.getUserData = function(e) {
-//   e.preventDefault();
-//   var $title = $('.user-title').val();
-//   var $content = $('.user-content').val();
-//   var $id = Date.now();
-//   var $quality = 'swill';
-//   $('.user-content').val('');
-//   $('.user-title').val('');
-//   console.log(IdeaData);
-// }
-
 function enableSaveBtn(e){
   var $title = $('.user-title');
   var $content = $('.user-content');
@@ -63,18 +49,10 @@ function enableSaveBtn(e){
   $('.save-btn').attr('disabled', true);
   $('.missing-input-text').text(`
   This idea is going to be awesome, 
-  make sure to fill out your idea and its title!`)
+  make sure to fill out your idea and its title!`);
+  setTimeout(function(){$('.missing-input-text').text('');}, 3000);
   }
 };
-
-// function verifyUserInput(){
-//   $('.save-btn').attr('disabled', true);
-//   $('.missing-input-text').text(`
-//       This idea is going to be awesome, 
-//       make sure to fill out your idea and its title!`); 
-//   setTimeout(verifyUserInput, 1000)
-// }
-
 
 function createCard(title, content, id, quality){
   $('.parent-box').prepend(`

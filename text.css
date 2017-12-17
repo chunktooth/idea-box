@@ -21,7 +21,7 @@ body {
 
 header {
   margin: 0;
-  height: 44%;
+  height: 48%;
   background-color: #E5F3F2;
 }
 
@@ -120,6 +120,12 @@ p {
   background-color: #045E55;
 }
 
+.missing-input-text {
+    margin: auto;
+    font-size: .7rem;
+    text-align: center;
+    width: 85%;
+}
 
 
 

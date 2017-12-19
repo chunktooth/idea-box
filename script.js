@@ -30,7 +30,7 @@ function getUserData(e) {
   var $title = $('.user-title').val();
   var $content = $('.user-content').val();
   var $id = Date.now();
-  var $quality = 'swill';
+  var $quality = 'swill' || quality;
   $('.user-content').val('');
   $('.user-title').val('');
   storeIdeaCards($title, $content, $id, $quality);
@@ -64,8 +64,10 @@ function getIdeaFromStorage(key) {
 function createCard(title, content, id, quality){
   $('.parent-box').prepend(`
     <article id=${id}>
+      <header class="article-header">
         <h2>${title}</h2>
-        <button class="delete-btn"></button>      
+        <button class="delete-btn"></button>
+      </header>      
       <p>${content}</p>
       <footer>
         <button class="upvote-btn"></button>
@@ -77,8 +79,13 @@ function createCard(title, content, id, quality){
 }
 
 function deleteCard(key) {
-  var card = $(this).parent();
+  var card = $(this).closest('article');
   var cardId = card.attr('id');
+  console.log(cardId)
   localStorage.removeItem(cardId);
-  $(this).parent().remove();
+  $(this).closest('article').remove()
 }
+
+
+
+  

@@ -43,41 +43,51 @@ h1 span {
 }
 
 article {
+  margin: auto;
   width: 80%;
-  height: 30%;
+  height: 40%;
+  border-bottom: 3px solid #d1d3d4;
 }
 
 h2 {
+  display: inline-block;
   color: #6D6E71;
 }
 
+h4 {
+  font-size: 0.9rem;
+  margin-left: 2rem;
+  display: inline-block;
+}
+
 h4 span {
+
   color: #6D6E71;
 }
 
 
 p {
   color: #939598;
+  position: relative;
+  bottom: 1.5rem;
 }
 
-#title,
-#content,
-#search {
-  display: block;
-  border: solid 1.5px #d1d3d4;
-  width: 85%;
-  margin: 0.5rem auto;
-  color:  #D1d3d4;
-  font-weight: bold;
-  font-size: 0.8rem;  
+button {
+  display: inline-block;
 }
 
-#title {
-  height: 1.6rem;
+::placeholder {
+  margin: 0;
+  padding-left: 0.5rem;
+  color: #BDBEC0;
+  vertical-align: top;
 }
 
-#content {
-  height: 4rem
+.article-header {
+  background-color: #FFFFFF;
+  position: relative;
+  margin: 0;
+  width: 100%;
 }
 
 .upvote-btn,
@@ -92,6 +102,10 @@ p {
 }
 
 .delete-btn {
+  display: inline-block;
+  position: absolute;
+  top: 2rem;
+  right: 0.5rem;
   background-image: url(images/idea-icons/delete.svg);
 }
 
@@ -131,10 +145,69 @@ p {
 }
 
 .missing-input-text {
+    position: relative;
+    top: 0.2rem;
     margin: auto;
     font-size: .7rem;
     text-align: center;
     width: 85%;
+}
+
+#title,
+#content,
+#search {
+  display: block;
+  border: solid 1.5px #d1d3d4;
+  width: 85%;
+  margin: 0.5rem auto;
+  color:  #D1d3d4;
+  font-weight: bold;
+  font-size: 0.8rem;  
+}
+
+
+#title {
+  height: 1.6rem;
+}
+
+#content {
+  height: 4rem
+}
+
+#search {
+  width: 80%;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 1400px) {
+  
+  header {
+    text-align: center;
+    
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  article {
+    width: 55%;
+  }
+
+  .save-btn {
+    position: relative;
+    left:0;
+    width: 55%;
+    height: 2.2rem;
+  }
+
+  #title,
+  #content,
+  #search {
+    width: 55%;
+    height: 2rem;
+    margin-bottom: 1.3rem;
+  }
 }
 
 

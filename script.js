@@ -1,4 +1,5 @@
-// prepend idea to page on submit
+// add mobile responsiveness
+
 $('.user-title').on('input', enableSaveBtn);
 $('.user-content').on('input', enableSaveBtn);
 $('.save-btn').on('click', getUserData);
@@ -9,6 +10,20 @@ $(document).ready(function() {
   getIdeaFromStorage(key);
   }
 });
+
+function enableSaveBtn(e){
+  var $title = $('.user-title');
+  var $content = $('.user-content');
+  if ($title.val() && $content.val()){
+    $('.save-btn').attr('disabled', false); 
+  } else {
+  $('.save-btn').attr('disabled', true);
+  $('.missing-input-text').text(`
+  This idea is going to be awesome, 
+  make sure to fill out your idea and its title!`);
+  setTimeout(function(){$('.missing-input-text').text('');}, 3000);
+  }
+};
 
 function getUserData(e) {
   e.preventDefault();
@@ -46,20 +61,6 @@ function getIdeaFromStorage(key) {
   createCard(title, content, id, quality);
 }
 
-function enableSaveBtn(e){
-  var $title = $('.user-title');
-  var $content = $('.user-content');
-  if ($title.val() && $content.val()){
-    $('.save-btn').attr('disabled', false); 
-  } else {
-  $('.save-btn').attr('disabled', true);
-  $('.missing-input-text').text(`
-  This idea is going to be awesome, 
-  make sure to fill out your idea and its title!`);
-  setTimeout(function(){$('.missing-input-text').text('');}, 3000);
-  }
-};
-
 function createCard(title, content, id, quality){
   $('.parent-box').prepend(`
     <article id=${id}>
@@ -76,9 +77,8 @@ function createCard(title, content, id, quality){
 }
 
 function deleteCard(key) {
-  for(var i = 0; i < localStorage.length; i++){
-    var cardId = localStorage.key(i);
-    localStorage.removeItem(cardId);
-  }
- $(this).parent().remove();
+  var card = $(this).parent();
+  var cardId = card.attr('id');
+  localStorage.removeItem(cardId);
+  $(this).parent().remove();
 }

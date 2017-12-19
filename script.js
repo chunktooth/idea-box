@@ -4,6 +4,7 @@ $('.user-content').on('input', enableSaveBtn);
 $('.save-btn').on('click', getUserData);
 $('.parent-box').on('click', '.delete-btn', deleteCard);
 $('.parent-box').on('click', '.upvote-btn', upvoteCard);
+$('.parent-box').on('click', '.downvote-btn', downvoteCard);
 $(document).ready(function() {
   for(var i = 0; i < localStorage.length; i++){
   var key = localStorage.key(i);
@@ -84,6 +85,7 @@ function deleteCard(key) {
   localStorage.removeItem(cardId);
   $(this).closest('article').remove()
 }
+  
 
 function upvoteCard() {
   var card = $(this).closest('article');
@@ -106,5 +108,22 @@ function upvoteCard() {
 }
 
 
-
-  
+function downvoteCard() {
+  var card = $(this).closest('article');
+  var key = card.attr('id');
+  var retrievedObject = localStorage.getItem(key);
+  var parsedObject = JSON.parse(retrievedObject);
+  var cardQuality = parsedObject.quality;
+  var qualityTag = $(this).closest('footer').find('h4');
+  if (cardQuality === 'genius') {
+    parsedObject.quality = 'plausible';
+    var stringifyObject = JSON.stringify(parsedObject);
+    localStorage.setItem(key, stringifyObject);
+    qualityTag.html(`quality: <span>plausible</span>`);
+    } else if (cardQuality === 'plausible') {
+    parsedObject.quality = 'swill';
+    var stringifyObject = JSON.stringify(parsedObject);
+    localStorage.setItem(key, stringifyObject);
+    qualityTag.html(`quality: <span>swill</span>`);
+    } 
+}

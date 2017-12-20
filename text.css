@@ -61,7 +61,6 @@ h4 {
 }
 
 h4 span {
-
   color: #6D6E71;
 }
 
@@ -76,7 +75,7 @@ button {
   display: inline-block;
 }
 
-::placeholder {
+.placeholder {
   margin: 0;
   padding-left: 0.5rem;
   color: #BDBEC0;
@@ -180,25 +179,22 @@ button {
 }
 
 @media screen and (min-width: 1400px) {
-  
   header {
-    text-align: center;
-    
-  }
-
-  h1 {
-    font-size: 3rem;
+    height: 36%;
   }
 
   article {
     width: 55%;
   }
 
+  h1 {
+    font-size: 3rem;
+  }
+
   .save-btn {
-    position: relative;
-    left:0;
     width: 55%;
     height: 2.2rem;
+    margin-left: 20.7%;
   }
 
   #title,
@@ -210,5 +206,99 @@ button {
   }
 }
 
+@media screen and (max-width: 1300px) {
+  header {
+    height: 31.5%;
+  }
 
+  .save-btn {
+    margin-left: 13.2%;
+    width: 70%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 70%;
+  }
+
+  article {
+    width: 70%;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    height: 35%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  header {
+    height: 36%;
+  }
+  .save-btn {
+    margin-left: 12.8%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  header {
+    height: 36%;
+  }
+
+  .save-btn {
+    margin-left: 12.5%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  header {
+    height: 36%;
+  }
+  .save-btn {
+    margin-left: 12.3%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    height: 36%;
+  }
+
+  .save-btn {
+    margin-left: 12%;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  header {
+    height: 36%;
+  }
+
+  .save-btn {
+    margin-left: 11.5%;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    height: 36%;
+  }
+
+  .save-btn {
+    margin-left: 11.2%;
+    width: 70%;
+  }
+}
 

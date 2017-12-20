@@ -31,7 +31,7 @@ function getUserData(e) {
   var $title = $('.user-title').val();
   var $content = $('.user-content').val();
   var $id = Date.now();
-  var $quality = 'swill' || quality;
+  var $quality = 'swill';
   $('.user-content').val('');
   $('.user-title').val('');
   storeIdeaCards($title, $content, $id, $quality);

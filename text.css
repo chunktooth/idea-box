@@ -21,7 +21,7 @@ body {
 
 header {
   margin: 0;
-  height: 48%;
+  height: 50%;
   background-color: #E5F3F2;
 }
 
@@ -52,6 +52,7 @@ article {
 h2 {
   display: inline-block;
   color: #6D6E71;
+  font-size: 1rem;
 }
 
 h4 {
@@ -61,7 +62,6 @@ h4 {
 }
 
 h4 span {
-
   color: #6D6E71;
 }
 
@@ -70,6 +70,7 @@ p {
   color: #939598;
   position: relative;
   bottom: 1.5rem;
+  font-size: 0.8rem;
 }
 
 button {
@@ -104,7 +105,7 @@ button {
 .delete-btn {
   display: inline-block;
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   right: 0.5rem;
   background-image: url(images/idea-icons/delete.svg);
 }
@@ -132,7 +133,6 @@ button {
   position: relative;
   left: 1.2rem;
   border-radius: 0%;
-  margin: auto;
   width: 85%;
   height: 1.5rem;
   color: #FFFFFF;
@@ -148,9 +148,12 @@ button {
     position: relative;
     top: 0.2rem;
     margin: auto;
-    font-size: .7rem;
+    font-size: .6rem;
     text-align: center;
     width: 85%;
+    height: 1.5rem;
+    background-color: #E5F3F2;
+    border-style: none;
 }
 
 #title,
@@ -179,36 +182,369 @@ button {
   margin-top: 1rem;
 }
 
-@media screen and (min-width: 1400px) {
-  
+@media screen and (min-width: 400px) {
   header {
+    height: 38%;
     text-align: center;
-    
+  }
+
+  .save-btn {
+    margin-right: 9%;
+    width: 80%;
+  }
+
+  #content {
+    height: 4rem;
+  }
+
+  .article-header {
+    text-align: left;
+  }
+
+  .missing-input-text {
+    font-size: 0.7rem;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 80%;
+  }
+
+@media screen and (min-width: 500px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 7%;
+    width: 80%;
+  }
+
+  #content {
+    height: 4rem;
+  }
+
+  .missing-input-text {
+    font-size: 0.7rem;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 80%;
+  }
+
+  article {
+    width: 80%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 7%;
+    width: 40%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 6%;
+    width: 40%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 5%;
+    width: 40.2%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 900px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 5%;
+    width: 40%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 4%;
+    width: 40%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 1100px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 4%;
+    width: 40.1%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  header {
+    height: 38%;
+  }
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 3.4%;
+    width: 40.1%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 1300px) {
+  header {
+    height: 38%;
+    text-align: center;
+  }
+
+  .save-btn {
+    margin-right: 3.4%;
+    width: 40.1%;
+  }
+  
+  #title,
+  #content,
+  #search {
+    width: 40%;
+  }
+
+  article {
+    width: 40%;
+  }
+
+  .article-header {
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 1400px) {
+  header {
+    height: 46%;
+  }
+
+  article {
+    width: 45%;
   }
 
   h1 {
     font-size: 3rem;
   }
 
-  article {
-    width: 55%;
+  h2 {
+    font-size: 1.7rem;
   }
 
   .save-btn {
-    position: relative;
-    left:0;
-    width: 55%;
+    width: 45%;
     height: 2.2rem;
+    margin-left: 0%;
+  }
+
+  .delete-btn {
+    position: absolute;
+    top: 1.9rem;
+    right: 0;
   }
 
   #title,
   #content,
   #search {
-    width: 55%;
+    width: 45%;
     height: 2rem;
     margin-bottom: 1.3rem;
   }
+
+  .missing-input-text {
+    font-size: 1rem;
+  }
 }
-
-
-

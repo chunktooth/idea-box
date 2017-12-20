@@ -208,7 +208,7 @@ button {
 
 @media screen and (max-width: 1300px) {
   header {
-    height: 31.5%;
+    height: 31.3%;
   }
 
   .save-btn {
@@ -247,6 +247,21 @@ button {
   }
   .save-btn {
     margin-left: 12.8%;
+  }
+
+@media screen and (max-width: 1024px) {
+  header {
+    height: 20%;
+  }
+  .save-btn {
+    position: relative;
+    left: 1.2rem;
+    border-radius: 0%;
+    margin-top: 2%;
+    height: 1.5rem;
+    color: #FFFFFF;
+    background-color: #00A79D;
+    font-size: 0.8rem;
   }
 }
 

@@ -77,11 +77,16 @@ button {
   display: inline-block;
 }
 
-::placeholder {
+input::placeholder {
   margin: 0;
   padding-left: 0.5rem;
   color: #BDBEC0;
   vertical-align: top;
+}
+
+.user-content::placeholder{
+  position: relative;
+  bottom: 30%;
 }
 
 .article-header {

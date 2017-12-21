@@ -1,10 +1,12 @@
-// add mobile responsiveness
 $('.user-title').on('input', enableSaveBtn);
 $('.user-content').on('input', enableSaveBtn);
 $('.save-btn').on('click', getUserData);
 $('.parent-box').on('click', '.delete-btn', deleteCard);
 $('.parent-box').on('click', '.upvote-btn', upvoteCard);
 $('.parent-box').on('click', '.downvote-btn', downvoteCard);
+$('.parent-box').on('blur', '.edit-title', editTitle);
+$('.parent-box').on('blur', '.edit-content', editContent);
+
 $(document).ready(function() {
   for(var i = 0; i < localStorage.length; i++){
   var key = localStorage.key(i);
@@ -66,10 +68,10 @@ function createCard(title, content, id, quality){
   $('.parent-box').prepend(`
     <article id=${id}>
       <header class="article-header">
-        <h2>${title}</h2>
+        <h2 class="edit-title" contenteditable="true">${title}</h2>
         <button class="delete-btn"></button>
       </header>      
-      <p>${content}</p>
+      <p class="edit-content" contenteditable="true">${content}</p>
       <footer>
         <button class="upvote-btn"></button>
         <button class="downvote-btn"></button>
@@ -107,7 +109,6 @@ function upvoteCard() {
   }
 }
 
-
 function downvoteCard() {
   var card = $(this).closest('article');
   var key = card.attr('id');
@@ -127,3 +128,25 @@ function downvoteCard() {
     qualityTag.html(`quality: <span>swill</span>`);
     } 
 }
+
+  function editTitle() {
+    var newTitle = $(this).text();
+    var card = $(this).closest('article');
+    var key = card.prop('id');
+    var retrievedObject = localStorage.getItem(key);
+    var parsedObject = JSON.parse(retrievedObject);
+    parsedObject.title = newTitle;
+    var stringifyObject = JSON.stringify(parsedObject);
+    localStorage.setItem(key, stringifyObject);
+  }
+
+  function editContent() {
+    var newContent = $(this).text();
+    var card = $(this).closest('article');
+    var key = card.prop('id');
+    var retrievedObject = localStorage.getItem(key);
+    var parsedObject = JSON.parse(retrievedObject);
+    parsedObject.content = newContent;
+    var stringifyObject = JSON.stringify(parsedObject);
+    localStorage.setItem(key, stringifyObject);
+  }

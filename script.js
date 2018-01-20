@@ -2,17 +2,19 @@ $('.user-title').on('input', enableSaveBtn);
 $('.user-content').on('input', enableSaveBtn);
 $('.save-btn').on('click', getUserData);
 $('.parent-box').on('click', '.delete-btn', deleteCard);
-$('.parent-box').on('click', '.upvote-btn', upvoteCard);
-$('.parent-box').on('click', '.downvote-btn', downvoteCard);
+$('.parent-box').on('click', '.upvote-btn', getQuaility);
+$('.parent-box').on('click', '.downvote-btn', getQuaility);
 $('.parent-box').on('blur', '.edit-title', editTitle);
 $('.parent-box').on('blur', '.edit-content', editContent);
+$('#search').on('keyup', searchContent);
+$(document).ready(pullKeysFromStorage);
 
-$(document).ready(function() {
+function pullKeysFromStorage() {
   for(var i = 0; i < localStorage.length; i++){
   var key = localStorage.key(i);
   getIdeaFromStorage(key);
   }
-});
+};
 
 function enableSaveBtn(e){
   var $title = $('.user-title');
@@ -39,15 +41,16 @@ function getUserData(e) {
   storeIdeaCards($title, $content, $id, $quality);
 }
 
-function IdeaData(title, content, id, quality) {
+function Idea(title, content, id, quality) {
   this.title = title;
   this.content = content;
   this.id = id;
-  this.quality = quality;
+  this.quality = quality || 'swill';
+  this.qualityCounter = 0;
 }
 
 function storeIdeaCards(title, content, id, quality) {
-  var ideaObject = new IdeaData(title, content, id, quality);
+  var ideaObject = new Idea(title, content, id, quality);
   var stringifyObject = JSON.stringify(ideaObject);
   var key = id;
   localStorage.setItem(key, stringifyObject);  
@@ -66,7 +69,7 @@ function getIdeaFromStorage(key) {
 
 function createCard(title, content, id, quality){
   $('.parent-box').prepend(`
-    <article id=${id}>
+    <article  class="cards" id=${id}>
       <header class="article-header">
         <h2 class="edit-title" contenteditable="true">${title}</h2>
         <button class="delete-btn"></button>
@@ -87,66 +90,74 @@ function deleteCard(key) {
   localStorage.removeItem(cardId);
   $(this).closest('article').remove()
 }
-  
 
-function upvoteCard() {
+function getQuaility(e) {
   var card = $(this).closest('article');
   var key = card.attr('id');
   var retrievedObject = localStorage.getItem(key);
   var parsedObject = JSON.parse(retrievedObject);
-  var cardQuality = parsedObject.quality;
-  var qualityTag = $(this).closest('footer').find('h4');
-  if (cardQuality === 'swill') {
-    parsedObject.quality = 'plausible';
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);    
-    qualityTag.html(`quality: <span>plausible</span>`);   
-      } else if (cardQuality === 'plausible') {
-    parsedObject.quality = 'genius';
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);
-    qualityTag.html(`quality: <span>genius</span>`);
+  var tag = $(this).closest('footer').find('h4');
+  changeQuailityCounter(e, tag, parsedObject)
+}
+
+function changeQuailityCounter(e, tag, object) {
+  if (e.target.className === 'upvote-btn' && object.qualityCounter < 2) {
+    object.qualityCounter++;
+    setObjectToStorage(object)
+    changeQuailityText(object, tag)
+  } else if (e.target.className === 'downvote-btn' && object.qualityCounter > 0) {
+    object.qualityCounter--;
+    setObjectToStorage(object);
+    changeQuailityText(object, tag)
   }
 }
 
-function downvoteCard() {
+function setObjectToStorage(object) {
+  var stringifyObject = JSON.stringify(object);
+  localStorage.setItem(object.id, stringifyObject)
+}
+
+function changeQuailityText(object, tag) {
+  var qualityArray = ['swill', 'plausible', 'genius'];
+  qualityArray.forEach(function(value, index){
+    if (object.qualityCounter === index) {
+      object.quality = value;
+      tag.html(`quality: <span>${value}</span>`);
+      setObjectToStorage(object);
+    }
+  })
+}
+
+function editTitle() {
+  var newTitle = $(this).text();
   var card = $(this).closest('article');
-  var key = card.attr('id');
+  var key = card.prop('id');
   var retrievedObject = localStorage.getItem(key);
   var parsedObject = JSON.parse(retrievedObject);
-  var cardQuality = parsedObject.quality;
-  var qualityTag = $(this).closest('footer').find('h4');
-  if (cardQuality === 'genius') {
-    parsedObject.quality = 'plausible';
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);
-    qualityTag.html(`quality: <span>plausible</span>`);
-    } else if (cardQuality === 'plausible') {
-    parsedObject.quality = 'swill';
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);
-    qualityTag.html(`quality: <span>swill</span>`);
-    } 
+  parsedObject.title = newTitle;
+  setObjectToStorage(parsedObject)
 }
 
-  function editTitle() {
-    var newTitle = $(this).text();
-    var card = $(this).closest('article');
-    var key = card.prop('id');
-    var retrievedObject = localStorage.getItem(key);
-    var parsedObject = JSON.parse(retrievedObject);
-    parsedObject.title = newTitle;
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);
-  }
+function editContent() {
+  var newContent = $(this).text();
+  var card = $(this).closest('article');
+  var key = card.prop('id');
+  var retrievedObject = localStorage.getItem(key);
+  var parsedObject = JSON.parse(retrievedObject);
+  parsedObject.content = newContent;
+  setObjectToStorage(parsedObject)
+}
 
-  function editContent() {
-    var newContent = $(this).text();
-    var card = $(this).closest('article');
-    var key = card.prop('id');
+function searchContent() {
+  $('.cards').addClass('hidden');
+  var searchValue = $(this).val();
+  for (var i = 0; i < localStorage.length; i++){
+    var key = localStorage.key(i)
     var retrievedObject = localStorage.getItem(key);
     var parsedObject = JSON.parse(retrievedObject);
-    parsedObject.content = newContent;
-    var stringifyObject = JSON.stringify(parsedObject);
-    localStorage.setItem(key, stringifyObject);
+  if (parsedObject.title.includes(searchValue) || parsedObject.content.includes(searchValue)) {
+      var cardId = '#' + key;
+      $(cardId).removeClass('hidden');
+    }
   }
+}
